@@ -30,9 +30,9 @@ function Matchday({ matches }: MatchdayProps) {
   const matchday = matches.filter((m) => m.matchday === selectedMatchday)
 
   function changeMatchday(e: MouseEvent<HTMLButtonElement>) {
+    const action = e.currentTarget.dataset.action
     setSelectedMatchDay(
-      (selectedMatchday) =>
-        selectedMatchday + Number(`${e.currentTarget.dataset.action}1`)
+      (selectedMatchday) => selectedMatchday + Number(`${action}1`)
     )
   }
 
