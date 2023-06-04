@@ -31,9 +31,15 @@ function Matchday({ matches }: MatchdayProps) {
 
   function changeMatchday(e: MouseEvent<HTMLButtonElement>) {
     const action = e.currentTarget.dataset.action
-    setSelectedMatchDay(
-      (selectedMatchday) => selectedMatchday + Number(`${action}1`)
-    )
+    setSelectedMatchDay((selectedMatchday) => {
+      let newSelectedMatchday = selectedMatchday + Number(`${action}1`)
+      if (newSelectedMatchday > 38) {
+        newSelectedMatchday = 1
+      } else if (newSelectedMatchday < 1) {
+        newSelectedMatchday = 38
+      }
+      return newSelectedMatchday
+    })
   }
 
   return (
